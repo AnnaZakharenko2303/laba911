@@ -11,12 +11,31 @@ def input_points():
     points = [tuple(map(float, point.strip('()').split(','))) for point in points]
     return points
 
-if __name__ == "__main__":
-    # Тестирование функции генерации массива
-    num_points = 5  # Количество случайных точек
-    points = generate_random_points(num_points)
-    print(f"Сгенерированные точки: {points}")
+def main_menu():
+    """Главное меню приложения."""
+    while True:
+        print("\nМеню:")
+        print("1) Генерация случайных точек")
+        print("2) Ввод точек вручную")
+        print("0) Завершение работы")
 
-    # Тестирование функции ввода массива
-    manual_points = input_points()
-    print(f"Введенные точки: {manual_points}")
+        choice = input("Выберите пункт меню: ")
+
+        if choice == '1':
+            num_points = int(input("Введите количество случайных точек: "))
+            points = generate_random_points(num_points)
+            print(f"Сгенерированные точки: {points}")
+        
+        elif choice == '2':
+            manual_points = input_points()
+            print(f"Введенные точки: {manual_points}")
+        
+        elif choice == '0':
+            print("Завершение работы программы.")
+            break
+        
+        else:
+            print("Неверный выбор. Попробуйте снова.")
+
+if __name__ == "__main__":
+    main_menu()
